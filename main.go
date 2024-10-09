@@ -115,12 +115,12 @@ func main() {
 		}
 
 		if float64(used_disk_space_bytes)/float64(disk_space_bytes) > 0.9 {
-			disk_usage_percent_str := strconv.FormatInt(int64((disk_space_bytes-used_disk_space_bytes)/1048576), 10)
+			disk_usage_percent_str := strconv.FormatInt(int64((disk_space_bytes-used_disk_space_bytes)/1000000), 10)
 			fmt.Println("Free disk space is too low:", disk_usage_percent_str, "Mb left")
 		}
 
 		if float64(net_load_bytes_per_s)/float64(net_throughput_bytes_per_s) > 0.9 {
-			net_available_mbits_str := strconv.FormatInt(int64((net_throughput_bytes_per_s-net_load_bytes_per_s)/1048576), 10)
+			net_available_mbits_str := strconv.FormatInt(int64((net_throughput_bytes_per_s-net_load_bytes_per_s)/1000000), 10)
 			fmt.Println("Network bandwidth usage high:", net_available_mbits_str, "Mbit/s available")
 		}
 
