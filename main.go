@@ -18,7 +18,7 @@ func main() {
 	errorCount := 0
 
 	for {
-		time.Sleep(2 * time.Second)
+		time.Sleep(1 * time.Second)
 
 		if errorCount >= 3 {
 			fmt.Println("Unable to fetch server statistic")
