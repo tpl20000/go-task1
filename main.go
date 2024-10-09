@@ -37,10 +37,10 @@ func main() {
 		if resp.StatusCode == 200 {
 
 			//check if http responce contents are ok
-			content_type := resp.Header.Get("Content-Type")
+			contentType := resp.Header.Get("Content-Type")
 
-			if content_type != "text/plain; charset=utf-8" {
-				fmt.Println("bad content type, received:", content_type)
+			if contentType != "text/plain; charset=utf-8" {
+				fmt.Println("bad content type, received:", contentType)
 				errorCount++
 				continue
 			}
@@ -76,12 +76,12 @@ func main() {
 			continue
 		}
 
-		maxRam, err := strconv.Atoi(values[1])
+		maxRAM, err := strconv.Atoi(values[1])
 		if err != nil {
 			continue
 		}
 
-		usedRam, err := strconv.Atoi(values[2])
+		usedRAM, err := strconv.Atoi(values[2])
 		if err != nil {
 			continue
 		}
@@ -110,10 +110,10 @@ func main() {
 			fmt.Println("Load Average is too high:", averageLoad)
 		}
 
-		if float64(usedRam)/float64(maxRam) > 0.8 {
+		if float64(usedRAM)/float64(maxRAM) > 0.8 {
 			//ram_usage_percent_str := strconv.FormatFloat((float64(used_ram)/float64(max_ram))*100, 'f', 2, 64)
-			ram_usage_percent_str := strconv.FormatInt(int64(math.Round((float64(usedRam)/float64(maxRam))*100)), 10) + "%"
-			fmt.Println("Memory usage too high:", ram_usage_percent_str)
+			ramUsage_percent_str := strconv.FormatInt(int64(math.Round((float64(usedRAM)/float64(maxRAM))*100)), 10) + "%"
+			fmt.Println("Memory usage too high:", ramUsage_percent_str)
 		}
 
 		if float64(usedDiskSpaceBytes)/float64(diskSpaceBytes) > 0.9 {
