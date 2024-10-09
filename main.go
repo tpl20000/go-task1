@@ -115,7 +115,7 @@ func main() {
 		}
 
 		if float64(used_disk_space_bytes)/float64(disk_space_bytes) > 0.9 {
-			disk_usage_percent_str := strconv.FormatInt(int64((disk_space_bytes-used_disk_space_bytes)/1000000), 10)
+			disk_usage_percent_str := strconv.FormatInt(int64((disk_space_bytes-used_disk_space_bytes)/1048576), 10)
 			fmt.Println("Free disk space is too low:", disk_usage_percent_str, "Mb left")
 		}
 
