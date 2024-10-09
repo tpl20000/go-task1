@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -110,8 +111,9 @@ func main() {
 		}
 
 		if float64(usedRam)/float64(maxRam) > 0.8 {
-			ramUsagePercentStr := strconv.FormatFloat(float64(usedRam)/float64(maxRam)*100, 'f', 0, 64) + "%"
-			fmt.Println("Memory usage too high:", ramUsagePercentStr)
+			//ram_usage_percent_str := strconv.FormatFloat((float64(used_ram)/float64(max_ram))*100, 'f', 2, 64)
+			ram_usage_percent_str := strconv.FormatInt(int64(math.Round((float64(usedRam)/float64(maxRam))*100)), 10) + "%"
+			fmt.Println("Memory usage too high:", ram_usage_percent_str)
 		}
 
 		if float64(usedDiskSpaceBytes)/float64(diskSpaceBytes) > 0.9 {
