@@ -39,7 +39,7 @@ func main() {
 			content_type := resp.Header.Get("Content-Type")
 
 			if content_type != "text/plain" {
-				fmt.Println("bad content type")
+				fmt.Println("bad content type, received:", content_type)
 				error_count++
 				continue
 			}
