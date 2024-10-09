@@ -109,19 +109,19 @@ func main() {
 			fmt.Println("Load Average is too high:", average_load)
 		}
 
-		if float64(used_ram/max_ram) > 0.8 {
-			ram_usage_percent_str := strconv.FormatFloat(float64(used_ram/max_ram)*100, 'f', 2, 64) + "%"
+		if float64(used_ram)/float64(max_ram) > 0.8 {
+			ram_usage_percent_str := strconv.FormatFloat(float64(used_ram)/float64(max_ram)*100, 'f', 0, 64) + "%"
 			fmt.Println("Memory usage too high:", ram_usage_percent_str)
 		}
 
-		if float64(used_disk_space_bytes/disk_space_bytes) > 0.9 {
-			disk_usage_percent_str := strconv.FormatInt(int64(used_disk_space_bytes-disk_space_bytes/1048576), 10)
+		if float64(used_disk_space_bytes)/float64(disk_space_bytes) > 0.9 {
+			disk_usage_percent_str := strconv.FormatInt(int64((disk_space_bytes-used_disk_space_bytes)/1048576), 10)
 			fmt.Println("Free disk space is too low:", disk_usage_percent_str, "Mb left")
 		}
 
-		if float64(net_load_bytes_per_s/net_throughput_bytes_per_s) > 0.9 {
-			net_load_percent_str := strconv.FormatInt(int64(net_throughput_bytes_per_s-net_load_bytes_per_s/1048576), 10)
-			fmt.Println("Network bandwidth usage high:", net_load_percent_str, "Mbit/s available")
+		if float64(net_load_bytes_per_s)/float64(net_throughput_bytes_per_s) > 0.9 {
+			net_available_mbits_str := strconv.FormatInt(int64((net_throughput_bytes_per_s-net_load_bytes_per_s)/1048576), 10)
+			fmt.Println("Network bandwidth usage high:", net_available_mbits_str, "Mbit/s available")
 		}
 
 	}
