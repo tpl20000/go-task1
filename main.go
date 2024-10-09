@@ -55,13 +55,36 @@ func main() {
 		}
 
 		average_load, err := strconv.Atoi(values[0])
-		max_ram, err := strconv.Atoi(values[1])
-		used_ram, err := strconv.Atoi(values[2])
-		disk_space_bytes, err := strconv.Atoi(values[3])
-		used_disk_space_bytes, err := strconv.Atoi(values[4])
-		net_throughput_bytes_per_s, err := strconv.Atoi(values[5])
-		net_load_bytes_per_s, err := strconv.Atoi(values[6])
+		if err != nil {
+			continue
+		}
 
+		max_ram, err := strconv.Atoi(values[1])
+		if err != nil {
+			continue
+		}
+
+		used_ram, err := strconv.Atoi(values[2])
+		if err != nil {
+			continue
+		}
+
+		disk_space_bytes, err := strconv.Atoi(values[3])
+		if err != nil {
+			continue
+		}
+
+		used_disk_space_bytes, err := strconv.Atoi(values[4])
+		if err != nil {
+			continue
+		}
+
+		net_throughput_bytes_per_s, err := strconv.Atoi(values[5])
+		if err != nil {
+			continue
+		}
+
+		net_load_bytes_per_s, err := strconv.Atoi(values[6])
 		if err != nil {
 			continue
 		}
