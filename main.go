@@ -68,43 +68,36 @@ func main() {
 
 		average_load, err := strconv.Atoi(values[0])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		max_ram, err := strconv.Atoi(values[1])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		used_ram, err := strconv.Atoi(values[2])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		disk_space_bytes, err := strconv.Atoi(values[3])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		used_disk_space_bytes, err := strconv.Atoi(values[4])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		net_throughput_bytes_per_s, err := strconv.Atoi(values[5])
 		if err != nil {
-			error_count++
 			continue
 		}
 
 		net_load_bytes_per_s, err := strconv.Atoi(values[6])
 		if err != nil {
-			error_count++
 			continue
 		}
 
@@ -113,7 +106,7 @@ func main() {
 		}
 
 		if float64(used_ram/max_ram) > 0.8 {
-			ram_usage_percent_str := strconv.FormatFloat(float64(used_ram/max_ram)*100, 'f', 2, 64)
+			ram_usage_percent_str := strconv.FormatFloat(float64(used_ram/max_ram)*100, 'f', 2, 64) + "%"
 			fmt.Println("Memory usage too high:", ram_usage_percent_str)
 		}
 
@@ -123,8 +116,8 @@ func main() {
 		}
 
 		if float64(net_load_bytes_per_s/net_throughput_bytes_per_s) > 0.9 {
-			net_load_percent_str := strconv.FormatFloat(float64(net_load_bytes_per_s/net_throughput_bytes_per_s)*100, 'f', 2, 64)
-			fmt.Println("Network load is too high:", net_load_percent_str)
+			net_load_percent_str := strconv.FormatInt(int64(net_throughput_bytes_per_s-net_load_bytes_per_s/1048576), 10)
+			fmt.Println("Network bandwidth usage high:", net_load_percent_str, "Mbit/s available")
 		}
 
 	}
