@@ -39,12 +39,14 @@ func main() {
 			content_type := resp.Header.Get("Content-Type")
 
 			if content_type != "text/plain" {
+				fmt.Println("bad content type")
 				error_count++
 				continue
 			}
 
 		} else {
 			//http responce status code is not ok (not 200)
+			fmt.Println("http responce status not 200")
 			error_count++
 			continue
 		}
@@ -53,6 +55,7 @@ func main() {
 		body, err := io.ReadAll(resp.Body)
 		resp.Body.Close()
 		if err != nil {
+			fmt.Println("unable to read response body")
 			error_count++
 			continue
 		}
@@ -62,6 +65,7 @@ func main() {
 
 		//check if values are ok
 		if len(values) != 7 {
+			fmt.Println("wrong amount of values")
 			error_count++
 			continue
 		}
