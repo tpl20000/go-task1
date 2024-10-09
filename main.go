@@ -38,7 +38,7 @@ func main() {
 			//check if http responce contents are ok
 			content_type := resp.Header.Get("Content-Type")
 
-			if content_type != "text/plain; charset=UTF-8" {
+			if content_type != "text/plain" {
 				error_count++
 				continue
 			}
