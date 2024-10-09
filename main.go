@@ -86,6 +86,7 @@ func main() {
 		}
 
 		fetch_success = true
+		break
 
 	}
 
